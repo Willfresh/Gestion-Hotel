@@ -1,9 +1,6 @@
 package com.defi.tp_vente.service;
 
-import com.defi.tp_vente.modele.Chambre;
-import com.defi.tp_vente.modele.Facturation;
-import com.defi.tp_vente.modele.Reservation;
-import com.defi.tp_vente.modele.State;
+import com.defi.tp_vente.modele.*;
 import com.defi.tp_vente.repository.FacturationRepository;
 import com.defi.tp_vente.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,21 +30,21 @@ public class ReservationService {
 
     public void deleteReser(int id) {reservationRepository.deleteById(id);
     }
-    /*public List<Reservation> changerEtatReservation(List<Reservation> listeReservation , List<Facturation> listeFactuation) {
+    public List<Reservation> changerEtatReservation(List<Reservation> listeReservation , List<Facturation> listeFacturation) {
         for (Reservation reservation : listeReservation) {
-            boolean chambreOccupee = false;
-            for (Reservation reservation : listeReservations) {
-                if (chambre.getId() == reservation.getChambre().getId()) {
-                    chambreOccupee = true;
+            boolean reserPayee = false;
+            for (Facturation facturation : listeFacturation) {
+                if (reservation.getId() == facturation.getChambre().getId()) {
+                    reserPayee = true;
                     break;
                 }
             }
-            if (chambreOccupee) {
-                chambre.setStatut(State.ETAT_OCCUPE);
+            if (reserPayee) {
+                reservation.setStatut(Etat.ETAT_PAYE);
             } else {
-                chambre.setStatut(State.ETAT_LIBRE);
+                reservation.setStatut(Etat.ETAT_LIBRE);
             }
         }
-        return listeChambres;
-    }*/
+        return listeReservation;
+    }
 }

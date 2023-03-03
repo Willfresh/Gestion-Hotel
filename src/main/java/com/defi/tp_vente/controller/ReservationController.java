@@ -1,6 +1,7 @@
 package com.defi.tp_vente.controller;
 
 import com.defi.tp_vente.modele.Chambre;
+import com.defi.tp_vente.modele.Facturation;
 import com.defi.tp_vente.modele.Reservation;
 import com.defi.tp_vente.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class ReservationController {
@@ -25,12 +27,23 @@ public class ReservationController {
     private CatClientService catClientService;
     @Autowired
     private ClientService clientService;
+    @Autowired
+    private FacturationService facturationService;
     @GetMapping("/reserShow")
     public String showAllReser(Model model){
-        model.addAttribute("listeReser",reservationService.showAllReser());
+        List<Reservation> listeReservation = reservationService.showAllReser();
+        List<Facturation> listeFacturation = facturationService.showAllFact();
+        model.addAttribute("listeReser",reservationService.changerEtatReservation(listeReservation, listeFacturation));
         //pas obligé d'avoir le mm nom que le return
         return "admin/ListeReser";
     }
+    /*@GetMapping("/chambreShow")
+    public String showAllChambre(Model model) {
+        List<Chambre> listeChambres = chambreService.showAllChambre();
+        List<Reservation> listeReservations = reservationService.showAllReser();
+        model.addAttribute("listeChambre", chambreService.changerEtatChambre(listeChambres, listeReservations));
+        return "admin/ListeChambre";
+    }*/
 
     @GetMapping("/reserForm")
     public String ShowFormReser(Model model){

@@ -391,7 +391,7 @@
             <td th:text="${reservation.catChambre.prix}"></td>
             <td th:text="${reservation.duree}"></td>
 
-            <td ><span class="badge bg-success"  ></span></td>
+            <td ><span class="badge bg-success"  th:text="${reservation.statut}"></span></td>
             <td>
               <a class="btn btn-danger" th:href="@{/reser/delete/{id}(id=${reservation.id})}"><i class="bi bi-trash"></i></a>
               <a class="btn btn-primary" th:href="@{/reserEdit{id}(id=${reservation.id})}"><i class="bi bi-pencil-square"></i></a>
