@@ -36,6 +36,18 @@ public class ChambreController {
         model.addAttribute("listeChambre", chambreService.changerEtatChambre(listeChambres, listeReservations));
         return "admin/ListeChambre";
     }
+    @GetMapping("/chambresLibres")
+    public String showChambresLibres(Model model) {
+        List<Chambre> chambresLibres = chambreService.chambresLibres(chambreService.showAllChambre(), reservationService.showAllReser());
+        model.addAttribute("chambresLibres", chambresLibres);
+        return "admin/listeChambreLibre";
+    }
+    @GetMapping("/chambresOccupees")
+    public String showChambresOccupees(Model model) {
+        List<Chambre> chambresOccupees = chambreService.chambresOccupees(chambreService.showAllChambre(), reservationService.showAllReser());
+        model.addAttribute("chambresOccupees", chambresOccupees);
+        return "admin/listeChambreOccupe";
+    }
 
     @GetMapping("/chambreForm")
     public String ShowFormArticle(Model model){

@@ -121,7 +121,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Categorie</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-gem"></i><span>Categorie de menu</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -140,12 +140,12 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Articles</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>Menu de restauration</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a th:href="@{/articlesShow}">
-              <i class="bi bi-circle"></i><span>Listes d'articles</span>
+              <i class="bi bi-circle"></i><span>Listes du menu</span>
             </a>
           </li>
           <li>
@@ -199,33 +199,136 @@
         </ul>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#catCham-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Categorie de chambres</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="catCham-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/catChamShow}">
+              <i class="bi bi-circle"></i><span>Type de chambre</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/catChamForm}">
+              <i class="bi bi-circle"></i><span>Formulaire d'ajout d'une catégorie</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#chambre-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Chambres</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="chambre-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/chambreShow}">
+              <i class="bi bi-circle"></i><span>Listes de chambres</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/chambresLibres}">
+              <i class="bi bi-circle"></i><span>Chambres disponibles</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/chambresOccupees}">
+              <i class="bi bi-circle"></i><span>Chambres occupées</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/chambreForm}">
+              <i class="bi bi-circle"></i><span>Formulaire d'ajout d'une chambre</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#catClient-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Categorie de clients</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="catClient-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/catClientShow}">
+              <i class="bi bi-circle"></i><span>Type de clients</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/catClientForm}">
+              <i class="bi bi-circle"></i><span>Formulaire d'ajout d'une catégorie de client</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#client-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="client-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/clientShow}">
+              <i class="bi bi-circle"></i><span>Listes de clients</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/clientForm}">
+              <i class="bi bi-circle"></i><span>Formulaire d'ajout d'un client</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#reser-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Reservations</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="reser-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/reserShow}">
+              <i class="bi bi-circle"></i><span>Listes de reservations</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/reserForm}">
+              <i class="bi bi-circle"></i><span>Formulaire d'ajout d'une reservation</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#fact-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Facturation</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="fact-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/factShow}">
+              <i class="bi bi-circle"></i><span>Listes de factures</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/factForm}">
+              <i class="bi bi-circle"></i><span>Formulaire d'ajout d'une facture</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
       <li class="nav-heading">Pages</li>
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" th:href="@{/contact}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
     </ul>
-
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">

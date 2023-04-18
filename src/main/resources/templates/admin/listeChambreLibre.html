@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Modification d'une vente</title>
+    <title>Liste d'articles</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -351,53 +351,45 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
                 <li class="breadcrumb-item">Pages</li>
-                <li class="breadcrumb-item active">Blank</li>
+                <li class="breadcrumb-item active">Liste des chambres disponibles</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
         <div class="container">
-
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><h2>Formulaire de mise à jour d'une chambre</h2></a>
+                    <a class="nav-link active" aria-current="page" href="#"><h2>Liste des chambres disponibles</h2></a>
                 </li>
             </ul>
 
-            <form class="row g-3" th:action="@{chambre/update}" th:object="${Une_Chambre}" method="post">
-                <div class="Form-group">
-                    <input type="hidden" th:field="*{id}" class="Form-control">
-
-                </div>
-                <div class="col-12">
-                    <label><h3>Catégorie de chambre</h3></label>
-                    <select class="form-select" id="validationDefault01" th:field="*{catChambreId}" required>
-                        <option th:each="cham:${listeCatCham}"
-                                th:value="${cham.id}"
-                                th:utext="${cham.typeChambre}">
-                        </option>
-                    </select>
-                </div>
-
-                <div class="col-12">
-                    <label for="validationDefault02" class="form-label"><h3>Prix</h3></label>
-                    <select class="form-select" id="validationDefault02" th:field="*{catChambreId}" required>
-                        <option th:each="pr:${listePrix}"
-                                th:value="${pr.id}"
-                                th:utext="${pr.prix}">
-                        </option>
-                    </select>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="validationDefault03" class="form-label">Numéro de chambre</label>
-                    <input type="number" class="form-control" id="validationDefault03" th:field="*{numeroChambre}" placeholder="Numéro de chambre" required>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Enregistrer</button>
-                </div>
-            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Type de chambre</th>
+                    <th>Prix</th>
+                    <th>Numéro de chambre</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- thymeleaf a se documenter-->
+                <tr th:each="chambre:${chambresLibres}">
+                    <td th:text="${chambre.id}"></td>
+                    <td th:text="${chambre.catChambre.typeChambre}"></td>
+                    <td th:text="${chambre.catChambre.prix}"></td>
+                    <td th:text="${chambre.numeroChambre}"></td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{/chambre/delete/{id}(id=${chambre.id})}"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-primary" th:href="@{/chambreEdit{id}(id=${chambre.id})}"><i class="bi bi-pencil-square"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+            <a class="btn btn-outline-primary" th:href="@{/chambreForm}">Ajouter une chambre</a>
         </div>
     </section>
 
@@ -418,7 +410,6 @@
 </footer><!-- End Footer -->
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
 <!-- Vendor JS Files -->
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -8,6 +8,7 @@ import com.defi.tp_vente.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -65,7 +66,41 @@ public class ChambreService {
             }
         }
         return listeChambres;
+
+
     }
+
+    public List<Chambre> chambresLibres(List<Chambre> listeChambres, List<Reservation> listeReservations) {
+        List<Chambre> chambresLibres = new ArrayList<>();
+        for (Chambre chambre : listeChambres) {
+            boolean chambreOccupee = false;
+            for (Reservation reservation : listeReservations) {
+                if (chambre.getId() == reservation.getChambre().getId()) {
+                    chambreOccupee = true;
+                    break;
+                }
+            }
+            if (!chambreOccupee) {
+                chambresLibres.add(chambre);
+            }
+        }
+        return chambresLibres;
+    }
+
+    public List<Chambre> chambresOccupees(List<Chambre> listeChambres, List<Reservation> listeReservations) {
+        List<Chambre> chambresOccupees = new ArrayList<>();
+        for (Chambre chambre : listeChambres) {
+            for (Reservation reservation : listeReservations) {
+                if (chambre.getId() == reservation.getChambre().getId()) {
+                    chambresOccupees.add(chambre);
+                    break;
+                }
+            }
+        }
+        return chambresOccupees;
+    }
+
+
 
 
 }
